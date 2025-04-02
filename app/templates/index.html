@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENTRANCE</title>
+    <link rel="stylesheet" href="/app/static/css/index.css">
+</head>
+<body>
+    <header>
+        <span>ENTRANCE</span>
+
+        <div class="flex">
+            <div id="registr_btn">Регистрация</div>
+            <div id="login_btn">Войти</div>
+        </div>
+    </header>
+    <form class="user_data_form" action="/registration_user" method="post">
+        <span class="hide_userdata_form">×</span>
+        <label>Username</label>
+        <input type="text" name="username" placeholder="username">
+        <label>Email</label>
+        <input type="text" name="email" placeholder="email">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="password">
+        <div id="rules_checkbox_field">
+            <input id="rules_checkbox" name="rules_checkbox" type="checkbox"></input>
+            <label for="rules_checkbox">Согласны ли вы с правилами</label>
+        </div>
+        {% if reg_error %}
+        <div class="entrance_error">{{ reg_error }}</div>
+        {% endif %}
+        <button type="submit">Регистрация</button>
+    </form>
+
+    <form class="user_data_form" action="/login_user" method="post">
+        <span class="hide_userdata_form">×</span>
+        <label>Username</label>
+        <input type="text" name="username" placeholder="username">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="password">
+        {% if reg_error %}
+        <div class="entrance_error">{{ reg_error }}</div>
+        {% endif %}
+        <button type="submit">Войти</button>
+    </form>
+
+
+    {% if reg_error %}
+        <script>alert("{{ reg_error }}");</script>
+    {% endif %}
+    <script src="/app/static/js/index.js"></script>
+</body>
+</html>
